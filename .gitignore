@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+db.sqlite3
+
+# Django
+staticfiles/
+
+# Node/Next.js
+node_modules/
+.next/
+.turbo/
+*.log
+
+# Env
+.env
+.env.*
+!.env.example
+frontend/.env
+frontend/.env.local
+frontend/.env.*
+!frontend/.env.local.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Local binaries/installers
+python-3.11.9-amd64.exe
