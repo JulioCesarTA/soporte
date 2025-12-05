@@ -355,22 +355,24 @@ export default function Home() {
                     styles: mapStyle,
                   }}
                 >
-                  {districtPolygons
-                    .filter((d) => !filters.district_id || String(d.id) === filters.district_id)
-                    .map((district) =>
-                      district.polygons.map((poly, idx) => (
+                  {districtPolygons.map((district) =>
+                    district.polygons.map((poly, idx) => {
+                      const selected = !filters.district_id || String(district.id) === filters.district_id;
+                      return (
                         <Polygon
                           key={`${district.id}-${idx}`}
                           path={poly}
                           options={{
                             fillColor: district.color,
-                            fillOpacity: 0.25,
+                            fillOpacity: selected ? 0.25 : 0.08,
                             strokeColor: district.color,
-                            strokeWeight: filters.district_id ? 2 : 1,
+                            strokeOpacity: selected ? 1 : 0.6,
+                            strokeWeight: selected ? 2 : 1,
                           }}
                         />
-                      ))
-                    )}
+                      );
+                    })
+                  )}
 
                   {heatData.length ? (
                     <HeatmapLayer
